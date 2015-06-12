@@ -1,4 +1,5 @@
 package br.com.elo7.selecao.modelo;
+
 public class Coordenada {
 
 	private Integer x;
@@ -21,6 +22,11 @@ public class Coordenada {
 
 	public Integer getY() {
 		return y;
+	}
+
+	@Override
+	public String toString() {
+		return "Coordenada [x=" + x + ", y=" + y + "]";
 	}
 
 	public void setY(Integer y) {

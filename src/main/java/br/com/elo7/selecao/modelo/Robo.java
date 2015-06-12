@@ -1,4 +1,5 @@
 package br.com.elo7.selecao.modelo;
+
 public class Robo {
 
 	private Coordenada coordenada;
@@ -24,6 +25,22 @@ public class Robo {
 
 	public void setDirecao(Direcao direcao) {
 		this.direcao = direcao;
+	}
+
+	@Override
+	public String toString() {
+		return "Robo [coordenada=" + coordenada + ", direcao=" + direcao + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Robo other = (Robo) obj;
+		if (this.getCoordenada().getX() == other.getCoordenada().getX()
+				&& this.getCoordenada().getY() == other.getCoordenada().getY()
+				&& this.direcao == other.getDirecao()) {
+			return true;
+		}
+		return false;
 	}
 
 }
