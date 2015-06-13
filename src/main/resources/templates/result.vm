@@ -6,8 +6,8 @@
       var xPlanalto = ${coordPlanalto[0]}
       var yPlanalto = ${coordPlanalto[1]}
       
-      var xRobot = ${coordRobot[0]}
-      var yRobot = ${coordRobot[1]}
+      var xRobot = ${coordRobot.x}
+      var yRobot = ${coordRobot.y}
       
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);

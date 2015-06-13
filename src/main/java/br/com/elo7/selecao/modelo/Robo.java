@@ -1,6 +1,15 @@
 package br.com.elo7.selecao.modelo;
 
+import br.com.elo7.selecao.business.AcaoDireita;
+import br.com.elo7.selecao.business.AcaoEsquerda;
+import br.com.elo7.selecao.business.AcaoMove;
+import br.com.elo7.selecao.business.AcaoRobot;
+
 public class Robo {
+
+	private AcaoRobot direita;
+	private AcaoRobot esquerda;
+	private AcaoRobot move;
 
 	private Coordenada coordenada;
 
@@ -9,6 +18,10 @@ public class Robo {
 	public Robo(Coordenada coordenada, Direcao direcao) {
 		this.coordenada = coordenada;
 		this.direcao = direcao;
+
+		this.direita = new AcaoDireita(this);
+		this.esquerda = new AcaoEsquerda(this);
+		this.move = new AcaoMove(this);
 	}
 
 	public Coordenada getCoordenada() {
@@ -27,6 +40,21 @@ public class Robo {
 		this.direcao = direcao;
 	}
 
+	public Robo right() {
+		direita.mudaEstado();
+		return this;
+	}
+
+	public Robo left() {
+		esquerda.mudaEstado();
+		return this;
+	}
+
+	public Robo move() {
+		move.mudaEstado();
+		return this;
+	}
+
 	@Override
 	public String toString() {
 		return "Robo [coordenada=" + coordenada + ", direcao=" + direcao + "]";
@@ -42,5 +70,4 @@ public class Robo {
 		}
 		return false;
 	}
-
 }

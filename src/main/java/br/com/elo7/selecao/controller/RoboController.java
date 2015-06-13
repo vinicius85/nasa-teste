@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.elo7.selecao.business.Mudar;
 import br.com.elo7.selecao.modelo.Coordenada;
 import br.com.elo7.selecao.modelo.Direcao;
-import br.com.elo7.selecao.modelo.Movimento;
 import br.com.elo7.selecao.modelo.Robo;
 
 @Controller
@@ -35,14 +33,34 @@ public class RoboController {
 		Robo robo = new Robo(new Coordenada(Integer.valueOf(coordRobot[0]),
 				Integer.valueOf(coordRobot[1])), direcaoRobot);
 
-		Mudar mudar = new Mudar();
-
-		mudar.mudarEstado(robo, Movimento.MOVE);
+		this.aplicarAcao(robo, caminhos);
+		
+		Coordenada coordenada = robo.getCoordenada();
 
 		ModelAndView mav = new ModelAndView("result");
 		mav.addObject("coordPlanalto", coordPlanalto);
-		mav.addObject("coordRobot", coordRobot);
+		mav.addObject("coordRobot", coordenada);
 
 		return mav;
+	}
+
+	private void aplicarAcao(Robo robo, String caminhos) {
+
+		for (char c : caminhos.toCharArray()) {
+
+			if (c == 'L') {
+				robo.left();
+			}
+
+			else if (c == 'R') {
+				robo.right();
+			}
+
+			else if (c == 'M') {
+				robo.move();
+			}
+
+		}
+
 	}
 }
