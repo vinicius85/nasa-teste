@@ -3,11 +3,11 @@ package br.com.elo7.selecao.testes;
 import org.junit.Assert;
 import org.junit.Test;
 
+import br.com.elo7.selecao.business.Mudar;
 import br.com.elo7.selecao.modelo.Coordenada;
 import br.com.elo7.selecao.modelo.Direcao;
 import br.com.elo7.selecao.modelo.Movimento;
 import br.com.elo7.selecao.modelo.Robo;
-import br.com.elo7.selecao.state.Mudar;
 
 public class TestesMudaEstado {
 

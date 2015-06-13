@@ -1,4 +1,4 @@
-package br.com.elo7.selecao.state;
+package br.com.elo7.selecao.business;
 
 import br.com.elo7.selecao.modelo.Coordenada;
 import br.com.elo7.selecao.modelo.Direcao;
