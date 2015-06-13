@@ -1,0 +1,7 @@
+Opa!!!
+<br><br>
+Ocorreu algum erro. Veja os logs.
+<br><br>
+${status}
+<br><br>
+${error}

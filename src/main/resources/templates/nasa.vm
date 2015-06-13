@@ -4,16 +4,14 @@
 
 <body>
 
-	<form  name="input" action="." method="post">
-		<span>Tamanho do planalto: </span><input type="text" name="board_size" value="">
+	<form name="input" action="/nasaForm" method="post">
+		<span>Tamanho do planalto: </span><input type="text" name="tamanho_planalto" value="">
 		<br><br>
-		<span>Coordenada do robot: </span><input type="text" name="robot_coordinate" value="">
+		<span>Coordenada do robot: </span><input type="text" name="coordenadas_robot" value="">
 		<br><br>
-		<span>Direcao do robot: </span><input type="text" name="robot_direction" value="">
+		<span>Direcao do robot: </span><input type="text" name="direcao_robot" value="">
 		<br><br>
-		<span>Caminhos: </span><input type="text" name="robot_path" value="">
-		<br><br>
-		<span>Coordenada do robot: </span><input type="text" name="robot_coordinate" value="">
+		<span>Caminho: </span><input type="text" name="caminho_robot" value="">
 		<br><br><br><br>
 		<input type="submit" name="compute" value="Calcular rota!">
 	</form>
