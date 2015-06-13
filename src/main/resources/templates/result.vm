@@ -1,3 +1,36 @@
-Yeah Baby!
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      
+      var xPlanalto = ${coordPlanalto[0]}
+      var yPlanalto = ${coordPlanalto[1]}
+      
+      var xRobot = ${coordRobot[0]}
+      var yRobot = ${coordRobot[1]}
+      
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['X', 'Y'],
+          [ xRobot,      yRobot]
+        ]);
 
-${saida}
+        var options = {
+          title: 'Mapeamento das sondas',
+          hAxis: {title: 'X', minValue: 0, maxValue: xPlanalto},
+          vAxis: {title: 'Y', minValue: 0, maxValue: yPlanalto},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

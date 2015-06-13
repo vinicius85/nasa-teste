@@ -40,7 +40,8 @@ public class RoboController {
 		mudar.mudarEstado(robo, Movimento.MOVE);
 
 		ModelAndView mav = new ModelAndView("result");
-		mav.addObject("saida", robo);
+		mav.addObject("coordPlanalto", coordPlanalto);
+		mav.addObject("coordRobot", coordRobot);
 
 		return mav;
 	}
