@@ -72,7 +72,7 @@
 			
 		</div>
 		
-		<div id="saida" style="width:1000px;height:600px;float:left">
+		<div id="saida" style="width:800px;height:600px;float:left">
 			#if($!robots)
 			    Entrada:
 			    <br><br>
