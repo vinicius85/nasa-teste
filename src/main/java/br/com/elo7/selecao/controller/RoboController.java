@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.elo7.selecao.modelo.Coordenada;
 import br.com.elo7.selecao.modelo.Direcao;
+import br.com.elo7.selecao.modelo.Planalto;
 import br.com.elo7.selecao.modelo.Robo;
 
 @Controller
@@ -30,7 +31,8 @@ public class RoboController {
 		String[] linhas = entrada.split("\r\n");
 
 		String[] coordPlanalto = linhas[0].split(" ");
-		mav.addObject("coordPlanalto", coordPlanalto);
+		Planalto planalto = new Planalto(Integer.valueOf(coordPlanalto[0]),
+				Integer.valueOf(coordPlanalto[1]));
 
 		int restanteLinhas = linhas.length - 1;
 
@@ -44,20 +46,20 @@ public class RoboController {
 			Robo robo = new Robo(new Coordenada(
 					Integer.valueOf(estadoRobot[0]),
 					Integer.valueOf(estadoRobot[1])),
-					Direcao.valueOf(estadoRobot[2]));
+					Direcao.valueOf(estadoRobot[2]), planalto);
 			this.aplicarAcao(robo, caminhoRobot);
 
 			robots.add(robo);
-
 		}
 
+		mav.addObject("coordPlanalto", coordPlanalto);
 		mav.addObject("robots", robots);
 		mav.addObject("entrada", entrada);
 
 		return mav;
 	}
 
-	private void aplicarAcao(Robo robo, String caminhos) {
+	public void aplicarAcao(Robo robo, String caminhos) {
 
 		for (char c : caminhos.toCharArray()) {
 

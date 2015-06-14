@@ -15,9 +15,12 @@ public class Robo {
 
 	private Direcao direcao;
 
-	public Robo(Coordenada coordenada, Direcao direcao) {
+	private Planalto planalto;
+
+	public Robo(Coordenada coordenada, Direcao direcao, Planalto planalto) {
 		this.coordenada = coordenada;
 		this.direcao = direcao;
+		this.planalto = planalto;
 
 		this.direita = new AcaoDireita(this);
 		this.esquerda = new AcaoEsquerda(this);
@@ -75,4 +78,9 @@ public class Robo {
 		}
 		return false;
 	}
+
+	public Planalto getPlanalto() {
+		return planalto;
+	}
+
 }

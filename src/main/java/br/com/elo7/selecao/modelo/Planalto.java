@@ -1,4 +1,5 @@
 package br.com.elo7.selecao.modelo;
+
 public class Planalto {
 
 	private Coordenada coordenadaInicial;
@@ -14,16 +15,8 @@ public class Planalto {
 		return coordenadaInicial;
 	}
 
-	public void setCoordenadaInicial(Coordenada coordenadaInicial) {
-		this.coordenadaInicial = coordenadaInicial;
-	}
-
 	public Coordenada getCoordenadaFinal() {
 		return coordenadaFinal;
-	}
-
-	public void setCoordenadaFinal(Coordenada coordenadaFinal) {
-		this.coordenadaFinal = coordenadaFinal;
 	}
 
 }
