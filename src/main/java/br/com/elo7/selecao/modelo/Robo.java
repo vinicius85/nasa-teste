@@ -57,7 +57,12 @@ public class Robo {
 
 	@Override
 	public String toString() {
-		return "Robo [coordenada=" + coordenada + ", direcao=" + direcao + "]";
+		StringBuilder result = new StringBuilder();
+		result.append(this.getCoordenada().getX()).append(" ")
+				.append(this.getCoordenada().getY()).append(" ")
+				.append(this.getDirecao());
+
+		return result.toString();
 	}
 
 	@Override

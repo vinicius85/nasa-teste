@@ -5,15 +5,14 @@
 <body>
 
 	<form name="input" action="/nasaForm" method="post">
-		<span>Tamanho do planalto: </span><input type="text" name="tamanho_planalto" value="">
+		<span>Entrada: </span>
+		
 		<br><br>
-		<span>Coordenada do robot: </span><input type="text" name="coordenadas_robot" value="">
-		<br><br>
-		<span>Direcao do robot: </span><input type="text" name="direcao_robot" value="">
-		<br><br>
-		<span>Caminho: </span><input type="text" name="caminho_robot" value="">
+		<textarea id="text" name="entrada" rows=10 cols=30>
+		</textarea>
+		
 		<br><br><br><br>
-		<input type="submit" name="compute" value="Calcular rota!">
+		<input type="submit" name="compute" value="Gerar grafico!">
 	</form>
 </body>
 

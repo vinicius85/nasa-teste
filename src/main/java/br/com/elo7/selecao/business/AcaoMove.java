@@ -16,19 +16,19 @@ public class AcaoMove implements AcaoRobot {
 	public void mudaEstado() {
 		Direcao direcao = robo.getDirecao();
 		Coordenada coordenada = robo.getCoordenada();
-		if (direcao == Direcao.NORTH) {
+		if (direcao == Direcao.N) {
 			coordenada.setY(coordenada.getY() + 1);
 		}
 
-		else if (direcao == Direcao.SOUTH) {
+		else if (direcao == Direcao.S) {
 			coordenada.setY(coordenada.getY() - 1);
 		}
 
-		else if (direcao == Direcao.WEST) {
+		else if (direcao == Direcao.W) {
 			coordenada.setX(coordenada.getX() - 1);
 		}
 
-		else if (direcao == Direcao.EAST) {
+		else if (direcao == Direcao.E) {
 			coordenada.setX(coordenada.getX() + 1);
 		}
 	}

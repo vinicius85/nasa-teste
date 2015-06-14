@@ -15,20 +15,20 @@ public class AcaoEsquerda implements AcaoRobot {
 	public void mudaEstado() {
 		Direcao direcao = robo.getDirecao();
 
-		if (direcao == Direcao.NORTH) {
-			robo.setDirecao(Direcao.WEST);
+		if (direcao == Direcao.N) {
+			robo.setDirecao(Direcao.W);
 		}
 
-		else if (direcao == Direcao.WEST) {
-			robo.setDirecao(Direcao.SOUTH);
+		else if (direcao == Direcao.W) {
+			robo.setDirecao(Direcao.S);
 		}
 
-		else if (direcao == Direcao.SOUTH) {
-			robo.setDirecao(Direcao.EAST);
+		else if (direcao == Direcao.S) {
+			robo.setDirecao(Direcao.E);
 		}
 
-		else if (direcao == Direcao.EAST) {
-			robo.setDirecao(Direcao.NORTH);
+		else if (direcao == Direcao.E) {
+			robo.setDirecao(Direcao.N);
 		}
 	}
 

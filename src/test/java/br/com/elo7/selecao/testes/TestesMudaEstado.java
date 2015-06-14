@@ -20,15 +20,15 @@ public class TestesMudaEstado {
 	@Test
 	public void testesMudaEstado() {
 
-		Robo robo = new Robo(new Coordenada(1, 2), Direcao.NORTH);
-		Robo expRobo = new Robo(new Coordenada(1, 3), Direcao.NORTH);
+		Robo robo = new Robo(new Coordenada(1, 2), Direcao.N);
+		Robo expRobo = new Robo(new Coordenada(1, 3), Direcao.N);
 
 		robo.left().move().left().move().left().move().left().move().move();
 
 		Assert.assertEquals(expRobo, robo);
 
-		Robo robo2 = new Robo(new Coordenada(3, 3), Direcao.EAST);
-		Robo expRobo2 = new Robo(new Coordenada(5, 1), Direcao.EAST);
+		Robo robo2 = new Robo(new Coordenada(3, 3), Direcao.E);
+		Robo expRobo2 = new Robo(new Coordenada(5, 1), Direcao.E);
 
 		robo2.move().move().right().move().move().right().move().right()
 				.right().move();

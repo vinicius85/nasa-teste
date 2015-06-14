@@ -1,5 +1,8 @@
 package br.com.elo7.selecao.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,26 +23,34 @@ public class RoboController {
 
 	@RequestMapping(value = "/nasaForm", method = RequestMethod.POST)
 	public ModelAndView getParametrosEntrada(
-			@RequestParam("tamanho_planalto") String planalto,
-			@RequestParam("coordenadas_robot") String coordenadas_robot,
-			@RequestParam("direcao_robot") String direcao_robot,
-			@RequestParam("caminho_robot") String caminho_robot) {
+			@RequestParam("entrada") String entrada) {
 
-		String coordPlanalto[] = planalto.split(",");
-		String coordRobot[] = coordenadas_robot.split(",");
-		Direcao direcaoRobot = Direcao.valueOf(direcao_robot);
-		String caminhos = caminho_robot;
+		String[] linhas = entrada.split("\r\n");
 
-		Robo robo = new Robo(new Coordenada(Integer.valueOf(coordRobot[0]),
-				Integer.valueOf(coordRobot[1])), direcaoRobot);
-
-		this.aplicarAcao(robo, caminhos);
-		
-		Coordenada coordenada = robo.getCoordenada();
-
+		String[] coordPlanalto = linhas[0].split(" ");
 		ModelAndView mav = new ModelAndView("result");
 		mav.addObject("coordPlanalto", coordPlanalto);
-		mav.addObject("coordRobot", coordenada);
+
+		int restanteLinhas = linhas.length - 1;
+
+		List<Robo> robots = new ArrayList<Robo>();
+
+		for (int i = 1; i < restanteLinhas; i = i + 2) {
+
+			String[] estadoRobot = linhas[i].split(" ");
+			String caminhoRobot = linhas[i + 1];
+
+			Robo robo = new Robo(new Coordenada(
+					Integer.valueOf(estadoRobot[0]),
+					Integer.valueOf(estadoRobot[1])),
+					Direcao.valueOf(estadoRobot[2]));
+			this.aplicarAcao(robo, caminhoRobot);
+
+			robots.add(robo);
+
+		}
+
+		mav.addObject("robots", robots);
 
 		return mav;
 	}
@@ -59,7 +70,6 @@ public class RoboController {
 			else if (c == 'M') {
 				robo.move();
 			}
-
 		}
 
 	}
