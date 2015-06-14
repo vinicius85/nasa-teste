@@ -25,10 +25,11 @@ public class RoboController {
 	public ModelAndView getParametrosEntrada(
 			@RequestParam("entrada") String entrada) {
 
+		ModelAndView mav = new ModelAndView("nasa");
+
 		String[] linhas = entrada.split("\r\n");
 
 		String[] coordPlanalto = linhas[0].split(" ");
-		ModelAndView mav = new ModelAndView("result");
 		mav.addObject("coordPlanalto", coordPlanalto);
 
 		int restanteLinhas = linhas.length - 1;
@@ -51,6 +52,7 @@ public class RoboController {
 		}
 
 		mav.addObject("robots", robots);
+		mav.addObject("entrada", entrada);
 
 		return mav;
 	}
