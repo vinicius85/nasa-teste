@@ -28,33 +28,39 @@ public class RoboController {
 
 		ModelAndView mav = new ModelAndView("nasa");
 
-		String[] linhas = entrada.split("\r\n");
+		try {
 
-		String[] coordPlanalto = linhas[0].split(" ");
-		Planalto planalto = new Planalto(Integer.valueOf(coordPlanalto[0]),
-				Integer.valueOf(coordPlanalto[1]));
+			String[] linhas = entrada.split("\r\n");
 
-		int restanteLinhas = linhas.length - 1;
+			String[] coordPlanalto = linhas[0].split(" ");
+			Planalto planalto = new Planalto(Integer.valueOf(coordPlanalto[0]),
+					Integer.valueOf(coordPlanalto[1]));
 
-		List<Robo> robots = new ArrayList<Robo>();
+			int restanteLinhas = linhas.length - 1;
 
-		for (int i = 1; i < restanteLinhas; i = i + 2) {
+			List<Robo> robots = new ArrayList<Robo>();
 
-			String[] estadoRobot = linhas[i].split(" ");
-			String caminhoRobot = linhas[i + 1];
+			for (int i = 1; i < restanteLinhas; i = i + 2) {
 
-			Robo robo = new Robo(new Coordenada(
-					Integer.valueOf(estadoRobot[0]),
-					Integer.valueOf(estadoRobot[1])),
-					Direcao.valueOf(estadoRobot[2]), planalto);
-			this.aplicarAcao(robo, caminhoRobot);
+				String[] estadoRobot = linhas[i].split(" ");
+				String caminhoRobot = linhas[i + 1];
 
-			robots.add(robo);
+				Robo robo = new Robo(new Coordenada(
+						Integer.valueOf(estadoRobot[0]),
+						Integer.valueOf(estadoRobot[1])),
+						Direcao.valueOf(estadoRobot[2]), planalto);
+				this.aplicarAcao(robo, caminhoRobot);
+
+				robots.add(robo);
+			}
+
+			mav.addObject("coordPlanalto", coordPlanalto);
+			mav.addObject("robots", robots);
+			mav.addObject("entrada", entrada);
+
+		} catch (Exception e) {
+			mav.addObject("error", e);
 		}
-
-		mav.addObject("coordPlanalto", coordPlanalto);
-		mav.addObject("robots", robots);
-		mav.addObject("entrada", entrada);
 
 		return mav;
 	}

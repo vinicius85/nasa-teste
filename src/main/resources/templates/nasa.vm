@@ -82,6 +82,8 @@
 			    <br><br>
 			    $robots
 			    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+		    #elseif($!error)
+		    	$error
 		    #end
 		</div>
 	
