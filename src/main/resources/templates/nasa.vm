@@ -2,18 +2,90 @@
 
 <html lang="en">
 
+<head>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	
+	#if($!{coordPlanalto[0]})
+	
+	    <script type="text/javascript">
+	      
+	      var xPlanalto = ${coordPlanalto[0]}
+	      var yPlanalto = ${coordPlanalto[1]}
+	      
+	      if(xPlanalto%2 != 0){
+	      	xPlanalto++
+	      }
+	      if(yPlanalto%2 != 0){
+	      	yPlanalto++
+	      }
+	      
+	      google.load("visualization", "1", {packages:["corechart"]});
+	      google.setOnLoadCallback(drawChart);
+	      
+	      function drawChart() {
+	      
+	        var data = new google.visualization.DataTable();
+		  
+		    data.addColumn('number', 'X');
+		    data.addColumn('number', 'Y');
+		    data.addColumn({type: 'string', role: 'tooltip'});
+	
+		    #foreach($robot in $robots)
+			    
+				var x =  $robot.coordenada.x;
+				var y =  $robot.coordenada.y;
+				
+			  	data.addRow([x, y, "$robot"]);
+		    #end
+	
+	        var options = {
+	          title: 'Mapeamento das sondas no planalto',
+	          subtitle: 'Posicao das sondas no planalto',
+	          hAxis: {title: 'X', minValue: 0, maxValue: xPlanalto},
+	          vAxis: {title: 'Y', minValue: 0, maxValue: yPlanalto},
+	          legend: 'none'
+	        };
+	
+	        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+	
+	        chart.draw(data, options);
+	      }
+	    </script>
+    #end
+</head>
+
 <body>
 
-	<form name="input" action="/nasaForm" method="post">
-		<span>Entrada: </span>
+	<div id="principal">
+	
+		<div id="formulario" style="width:300px;height:600px;float:left">
+	
+				<form name="input" action="/nasaForm" method="post">
+					<span>Configuracao: </span>
+					
+					<br><br>
+					<textarea id="text" name="entrada" rows=20 cols=30></textarea>
+					
+					<br><br><br><br>
+					<input type="submit" name="compute" value="Gerar saida!">
+				</form>
+			
+		</div>
 		
-		<br><br>
-		<textarea id="text" name="entrada" rows=10 cols=30>
-		</textarea>
-		
-		<br><br><br><br>
-		<input type="submit" name="compute" value="Gerar grafico!">
-	</form>
+		<div id="saida" style="width:1000px;height:600px;float:left">
+			#if($!robots)
+			    Entrada:
+			    <br><br>
+			    $entrada
+			    <br><br>
+				Saida:
+			    <br><br>
+			    $robots
+			    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+		    #end
+		</div>
+	
+	</div>
 </body>
 
 </html>
