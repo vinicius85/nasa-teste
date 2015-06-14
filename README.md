@@ -5,9 +5,7 @@
 ##Suposições
 
 - Assumi a construção de uma aplicação web;
-- As sondas não podem assumir valores de X e Y negativos;
-- As sondas não podem ultrapassar os limites do planalto;
-- Caso sejam passadas coordenadas que não estejam de acordo com as suposições acima, a sonda mantém seu estado;
+- As sondas não podem ultrapassar os limites do planalto, caso a ação não esteja de acordo com esta suposição, a sonda mantém seu estado;
 - Caso seja informada uma ação não esperada (diferente de L, M e R), a sonda mantém seu estado.
 
 
