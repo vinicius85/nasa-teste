@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      
+      var xPlanalto = ${coordPlanalto[0]}
+      var yPlanalto = ${coordPlanalto[1]}
+      
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+      
+        var data = new google.visualization.DataTable();
+	  
+	    data.addColumn('number', 'X');
+	    data.addColumn('number', 'Y');
+	    data.addColumn({type: 'string', role: 'tooltip'});
+
+	    #foreach($robot in $robots)
+		    
+			var x =  $robot.coordenada.x;
+			var y =  $robot.coordenada.y;
+			
+		  	data.addRow([x, y, "$robot"]);
+	    #end
+
+        var options = {
+          title: 'Mapeamento das sondas',
+          subtitle: 'Posicao das sondas no planalto',
+          hAxis: {title: 'X', minValue: 0, maxValue: xPlanalto},
+          vAxis: {title: 'Y', minValue: 0, maxValue: yPlanalto},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  
+  <body>
+    Saida:
+    <br><br>
+    $robots
+    <br><br>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+  
+</html>

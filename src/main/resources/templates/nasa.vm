@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<body>
+
+	<form name="input" action="/nasaForm" method="post">
+		<span>Entrada: </span>
+		
+		<br><br>
+		<textarea id="text" name="entrada" rows=10 cols=30>
+		</textarea>
+		
+		<br><br><br><br>
+		<input type="submit" name="compute" value="Gerar grafico!">
+	</form>
+</body>
+
+</html>
